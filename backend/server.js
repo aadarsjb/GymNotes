@@ -22,9 +22,10 @@ app.use((req, res, next) => {
 app.use('/api/workouts', workoutRoutes);
 
 //connect to database
+//Async in nature and therefore returns promise
 mongoose.connect(process.env.MONGO_URL)
     .then(() => {
-        //listening for requests
+        //listening for requests once connected to the database 
         app.listen(process.env.PORT, () => {
             console.log('Connected to DB and listening on port ', process.env.PORT);
         })

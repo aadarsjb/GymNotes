@@ -1,9 +1,11 @@
 import { useState } from "react"
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext"
 
 //Function that returns the form template
 const WorkoutForm = () => {
     //Create a new Workout object
     //update state of the form
+    const { dispatch } = useWorkoutsContext()
     const [title, setTitle] = useState('')
     const [load, setLoad] = useState('')
     const [reps, setReps] = useState('')
@@ -33,11 +35,12 @@ const WorkoutForm = () => {
             setLoad('')
             setReps('')
             setError(null)
-            console.log("New Workout Added")
+            console.log("New Workout Added", json)
+            dispatch({type: 'CREATE_WORKOUT', payload: json})
         }
     }
 
-    //REturning the template 
+    //Returning the form template 
     return (
 
         <form className="create" onSubmit={handleSubmit}>

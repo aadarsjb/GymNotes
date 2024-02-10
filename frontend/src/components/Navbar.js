@@ -1,5 +1,6 @@
 import {Link } from 'react-router-dom'
 
+//Function that returns Navbar template
 const Navbar = () => {
     return (
         <header>
